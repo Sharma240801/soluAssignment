@@ -132,62 +132,65 @@ export const Header: React.FC<HeaderProps> = ({
           </View>
 
           {/* Right section: Icons */}
-          <View style={styles.rightSection}>
-            {rightAction}
+          {!title &&
+            <View style={styles.rightSection}>
+              {rightAction}
 
-            {showSearch && (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Search')}
-                style={styles.iconButton}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Ionicons name="search-outline" size={22} color={colors.text} />
-              </TouchableOpacity>
-            )}
+              {showSearch && (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Search')}
+                  style={styles.iconButton}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Ionicons name="search-outline" size={22} color={colors.text} />
+                </TouchableOpacity>
+              )}
 
-            {showProfile && (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('MainTabs', { screen: 'ProfileTab' } as any)}
-                style={styles.iconButton}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Ionicons name="person-outline" size={22} color={colors.text} />
-              </TouchableOpacity>
-            )}
+              {showProfile && (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('MainTabs', { screen: 'ProfileTab' } as any)}
+                  style={styles.iconButton}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Ionicons name="person-outline" size={22} color={colors.text} />
+                </TouchableOpacity>
+              )}
 
-            {showCart && (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Cart')}
-                style={[styles.iconButton, styles.cartBtn]}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Ionicons name="bag-outline" size={22} color={colors.text} />
-                {itemCount > 0 && (
-                  <View
-                    style={[
-                      styles.cartBadge,
-                      {
-                        backgroundColor: colors.accent,
-                      },
-                    ]}
-                  >
-                    <Text
+              {showCart && (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Cart')}
+                  style={[styles.iconButton, styles.cartBtn]}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Ionicons name="bag-outline" size={22} color={colors.text} />
+                  {itemCount > 0 && (
+                    <View
                       style={[
-                        styles.cartBadgeText,
+                        styles.cartBadge,
                         {
-                          color: colors.badgeText,
-                          fontSize: 10,
-                          fontWeight: '800',
+                          backgroundColor: colors.accent,
                         },
                       ]}
                     >
-                      {itemCount > 99 ? '99+' : itemCount}
-                    </Text>
-                  </View>
-                )}
-              </TouchableOpacity>
-            )}
-          </View>
+                      <Text
+                        style={[
+                          styles.cartBadgeText,
+                          {
+                            color: colors.badgeText,
+                            fontSize: 10,
+                            fontWeight: '800',
+                          },
+                        ]}
+                      >
+                        {itemCount > 99 ? '99+' : itemCount}
+                      </Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              )}
+            </View>
+          }
+
         </View>
       </View>
 
